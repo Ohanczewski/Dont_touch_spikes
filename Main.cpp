@@ -1,8 +1,11 @@
 ﻿#include "Game_engine.h"
+#include <Windows.h>
+#include <time.h>
 
 int main() 
 {
     //Starting game
+    srand(time(NULL));
     Game_engine game;
 
     //Game loop

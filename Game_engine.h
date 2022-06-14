@@ -28,16 +28,29 @@ private:
 	sf::Font pointFont;
 	sf::Text pointDisp;
 
+	//Bonuses
+	sf::Clock bonusTime;
+	sf::Texture bonusTexture;
+	sf::Sprite bonus;
+	bool bonusSeen;
+
 	//Obstacles
 	sf::RectangleShape topBar, bottomBar;
 	std::vector<Obstacle> staticObstaclesTop;
 	std::vector<Obstacle> staticObstaclesBottom;
+
+	std::vector<Obstacle*> leftSpikes;
+	std::vector<Obstacle*> rightSpikes;
 
 	//Colors
 	sf::Color bgColor = sf::Color(247, 233, 195);
 	sf::Color obstacleColor = sf::Color(100, 100, 100);
 
 	bool end;
+
+	//End screen
+	bool endScreen;
+	sf::Text endText;
 
 	//Functions
 	void initWindow();
@@ -55,6 +68,7 @@ public:
 	void pollEvents();
 	void renderWindow();
 	void renderStaticObstacles();
+	void renderSpikes();
 	void updateWindow();
 
 };

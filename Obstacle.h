@@ -6,7 +6,7 @@
 #include <SFML/Network.hpp>
 #include <iostream>
 
-class Obstacle : sf::ConvexShape
+class Obstacle : public sf::ConvexShape
 {
 private:
 
@@ -14,6 +14,7 @@ public:
 	//Constructor
 	Obstacle();
 	Obstacle(sf::Vector2f pos, bool isRotated);
+	Obstacle(sf::Vector2f pos, char side);
 
 	//Destructor
 	~Obstacle();

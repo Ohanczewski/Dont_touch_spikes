@@ -1,2 +1,3 @@
 C:\Users\Admin\source\repos\Janusz_Kubczuk\x64\Release\Janusz_Kubczuk.exe
 C:\Users\Admin\Desktop\Janusz_Kubczuk\x64\Release\Game.exe
+C:\Users\dominpiano\Desktop\Dont_touch_spikes\x64\Release\Game.exe

@@ -3,7 +3,7 @@
 //private Functions
 void Player::initVariables()
 {
-	this->speedX = 8.f;
+	this->speedX = 400.f;
 	this->speedY = -12.f;
 	this->gravity = 14.f;
 	this->points = 0;
@@ -35,7 +35,7 @@ void Player::step(sf::Time time)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		if (!spacePressed) {
-			speedY = -8.5f;
+			speedY = -7.5f;
 			spacePressed = true;
 		}
 	}
@@ -46,7 +46,7 @@ void Player::step(sf::Time time)
 
 	speedY += gravity * elapsedTime;
 
-	this->move(speedX, speedY);
+	this->move(speedX * elapsedTime, speedY);
 }
 
 void Player::renderPlayer(sf::RenderTarget& target)
@@ -54,29 +54,56 @@ void Player::renderPlayer(sf::RenderTarget& target)
 	target.draw(*this);
 }
 
-void Player::checkCollision(sf::RenderWindow &window)
+bool Player::checkCollision()
 {
 	if (this->getGlobalBounds().left < 0.f)
 	{
 		speedX = -speedX;
 		this->scale(-1, 1);
 		points++;
+		return true;
 	}
-
-	if (this->getGlobalBounds().left + this->getGlobalBounds().width > 800.f)
+	else if (this->getGlobalBounds().left + this->getGlobalBounds().width > 800.f)
 	{
 		speedX = -speedX;
 		this->scale(-1, 1);
 		points++;
+		return true;
 	}
-
-
-	if (this->getGlobalBounds().top < 67.75f || this->getGlobalBounds().top + this->getGlobalBounds().height > 807.25f)
+	else
 	{
-		window.close();
+		return false;
 	}
 }
 
+
+bool Player::checkHit() 
+{
+	if (this->getGlobalBounds().top < 67.75f || this->getGlobalBounds().top + this->getGlobalBounds().height > 807.25f)
+	{
+		return true;
+	}
+	else 
+	{
+		return false;
+	}
+}
+
+bool Player::checkHit(std::vector<Obstacle*> spikes)
+{
+	for (auto& i : spikes)
+	{
+ 		if (i->getGlobalBounds().intersects(this->getGlobalBounds())) 
+		{
+			return true;
+			break;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
 
 
 

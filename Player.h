@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Network.hpp>
+#include "Obstacle.h"
 #include <iostream>
 
 class Player : public sf::Sprite
@@ -26,6 +27,8 @@ public:
 
 	void renderPlayer(sf::RenderTarget& target);
 	void step(sf::Time time);
-	void checkCollision(sf::RenderWindow &window);
+	bool checkCollision();
+	bool checkHit();
+	bool checkHit(std::vector<Obstacle*> spikes);
 };
 
